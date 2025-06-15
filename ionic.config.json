@@ -1,0 +1,7 @@
+{
+  "name": "mini-app-dashboard",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
