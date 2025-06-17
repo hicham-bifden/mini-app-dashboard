@@ -17,12 +17,17 @@
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
       </div>
+      <ion-button  shape="round" color="primary" href="/dashboard"> ->Dashboard</ion-button>
+      <ion-button  shape="round" color="secondary" href="/ajouter-aventure"> ->Ajouter Aventures</ion-button>
+      <ion-button  shape="round" color="tertiary" href="/liste-aventures"> Liste Aventures</ion-button>
+      <ion-button  shape="round" color="success" href="/detail-aventure"> Detail Aventures</ion-button>
+      <ion-button  shape="round" color="warning" href="/params"> Parametres</ion-button>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonButton } from '@ionic/vue';
 </script>
 
 <style scoped>
