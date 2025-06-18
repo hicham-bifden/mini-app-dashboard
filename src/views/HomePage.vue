@@ -3,6 +3,16 @@
     <ion-header :translucent="true">
       <ion-toolbar class="header-toolbar">
         <ion-title class="header-title">Mon Carnet d'Aventures</ion-title>
+        <ion-buttons slot="end">
+          <ion-button 
+            fill="clear" 
+            color="light"
+            @click="presentMenu"
+            class="menu-button"
+          >
+            <ion-icon :icon="menuOutline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -58,13 +68,16 @@ import {
   IonTitle, 
   IonToolbar, 
   IonButton,
-  IonIcon 
+  IonIcon,
+  IonButtons,
+  actionSheetController
 } from '@ionic/vue';
 import { 
   bookOutline, 
   addOutline, 
   listOutline, 
-  settingsOutline 
+  settingsOutline,
+  menuOutline
 } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 
@@ -74,6 +87,48 @@ const router = useRouter();
 // Fonction pour naviguer vers une page spécifique
 const navigateTo = (path: string) => {
   router.push(path);
+};
+
+// Fonction pour afficher le menu
+const presentMenu = async () => {
+  const actionSheet = await actionSheetController.create({
+    header: 'Menu de Navigation',
+    buttons: [
+      {
+        text: 'Accueil',
+        icon: bookOutline,
+        handler: () => {
+          router.push('/home');
+        }
+      },
+      {
+        text: 'Ajouter une Aventure',
+        icon: addOutline,
+        handler: () => {
+          router.push('/ajouter-aventure');
+        }
+      },
+      {
+        text: 'Mes Aventures',
+        icon: listOutline,
+        handler: () => {
+          router.push('/liste-aventures');
+        }
+      },
+      {
+        text: 'Paramètres',
+        icon: settingsOutline,
+        handler: () => {
+          router.push('/params');
+        }
+      },
+      {
+        text: 'Annuler',
+        role: 'cancel'
+      }
+    ]
+  });
+  await actionSheet.present();
 };
 </script>
 
@@ -89,6 +144,12 @@ const navigateTo = (path: string) => {
   font-size: 1.5rem;
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button {
+  color: white;
+  --color: white;
+  font-size: 1.2rem;
 }
 
 .welcome-container {
